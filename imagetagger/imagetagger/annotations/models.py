@@ -240,8 +240,8 @@ class AnnotationType(models.Model):
 
 class Export(models.Model):
     time = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
-    image_set = models.ForeignKey(ImageSet)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    image_set = models.ForeignKey(ImageSet, on_delete=models.CASCADE)
     annotation_count = models.IntegerField(default=0)
     export_text = models.TextField(default='')
     format = models.ForeignKey('ExportFormat', on_delete=models.PROTECT, related_name='exports')
